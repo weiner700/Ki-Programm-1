@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kostenloser KI-Text Humanizer</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #f4f6f9; color: #333; margin: 0; padding: 20px; }
+        .container { max-width: 800px; margin: 0 auto; background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        h1 { color: #1a1a1a; text-align: center; }
+        textarea { width: 100%; height: 150px; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 16px; margin-bottom: 20px; box-sizing: border-box; }
+        button { width: 100%; background: #2563eb; color: white; border: none; padding: 14px; border-radius: 8px; font-size: 16px; cursor: pointer; font-weight: bold; }
+        button:hover { background: #1d4ed8; }
+        .output { margin-top: 20px; padding: 15px; background: #eef2ff; border-radius: 8px; font-size: 16px; min-height: 80px; }
+        .ad-banner { background: #e5e7eb; border: 1px dashed #9ca3af; padding: 15px; text-align: center; margin: 20px 0; border-radius: 8px; color: #6b7280; font-size: 14px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>KI-Text Humanizer</h1>
+    <p>Verwandle steife KI-Texte in natürlich klingendes Deutsch.</p>
+
+    <!-- Werbebanner Oben -->
+    <div class="ad-banner">Werbeanzeige (Banner)</div>
+
+    <textarea id="inputText" placeholder="Füge deinen KI-generierten Text hier ein..."></textarea>
+    <button onclick="humanizeText()">Text jetzt umwandeln</button>
+
+    <h3>Menschlicher Text:</h3>
+    <div id="outputText" class="output">Dein überarbeiteter Text erscheint hier...</div>
+
+    <!-- Werbebanner Unten -->
+    <div class="ad-banner">Werbeanzeige (Banner)</div>
+</div>
+
+<script>
+function humanizeText() {
+    let text = document.getElementById("inputText").value;
+    if (!text.trim()) {
+        alert("Bitte gib zuerst einen Text ein!");
+        return;
+    }
+
+    // Einfache Ersetzungslogik für KI-Phrasen
+    let replacements = {
+        "Zusammenfassend lässt sich sagen": "Fazit:",
+        "darüber hinaus": "ausserdem",
+        "im Wesentlichen": "eigentlich",
+        "es ist wichtig zu beachten": "wichtig ist",
+        "des Weiteren": "zudem",
+        "in der heutigen digitalen Welt": "heute"
+    };
+
+    for (let key in replacements) {
+        let regex = new RegExp(key, "gi");
+        text = text.replace(regex, replacements[key]);
+    }
+
+    document.getElementById("outputText").innerText = text;
+}
+</script>
+
+</body>
+</html>
